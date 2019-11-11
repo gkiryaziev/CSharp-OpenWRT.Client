@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWRT.Client", "OpenWRT.Client\OpenWRT.Client.csproj", "{9F02CDC5-0519-40B3-852D-BCC77A256578}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSH.Client", "SSH.Client\SSH.Client.csproj", "{E7F30ED1-4DE0-467E-9AC6-2FF305960E2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSH.Client.Tests", "SSH.Client.Tests\SSH.Client.Tests.csproj", "{6E541569-20B2-4917-8CE6-569840D5BA62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F02CDC5-0519-40B3-852D-BCC77A256578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F02CDC5-0519-40B3-852D-BCC77A256578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F02CDC5-0519-40B3-852D-BCC77A256578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F02CDC5-0519-40B3-852D-BCC77A256578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F30ED1-4DE0-467E-9AC6-2FF305960E2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F30ED1-4DE0-467E-9AC6-2FF305960E2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F30ED1-4DE0-467E-9AC6-2FF305960E2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F30ED1-4DE0-467E-9AC6-2FF305960E2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E541569-20B2-4917-8CE6-569840D5BA62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E541569-20B2-4917-8CE6-569840D5BA62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E541569-20B2-4917-8CE6-569840D5BA62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E541569-20B2-4917-8CE6-569840D5BA62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F825C157-E3C6-430B-98A8-5C9DF7D896B1}
+	EndGlobalSection
+EndGlobal
