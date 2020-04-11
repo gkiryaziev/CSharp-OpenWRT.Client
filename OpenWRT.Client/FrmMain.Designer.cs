@@ -46,10 +46,16 @@
             this.grpBoxCommand = new System.Windows.Forms.GroupBox();
             this.grpBoxSignal = new System.Windows.Forms.GroupBox();
             this.grpBoxLog = new System.Windows.Forms.GroupBox();
+            this.grpBoxTXBitrate = new System.Windows.Forms.GroupBox();
+            this.cirPbTXBitrate = new CircularProgressBar.CircularProgressBar();
+            this.grpBoxRXBitrate = new System.Windows.Forms.GroupBox();
+            this.cirPbRXBitrate = new CircularProgressBar.CircularProgressBar();
             this.grpBoxConnection.SuspendLayout();
             this.grpBoxCommand.SuspendLayout();
             this.grpBoxSignal.SuspendLayout();
             this.grpBoxLog.SuspendLayout();
+            this.grpBoxTXBitrate.SuspendLayout();
+            this.grpBoxRXBitrate.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -68,14 +74,14 @@
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(630, 100);
+            this.txtLog.Size = new System.Drawing.Size(636, 100);
             this.txtLog.TabIndex = 2;
             // 
             // btnSend
             // 
             this.btnSend.Location = new System.Drawing.Point(536, 15);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(100, 23);
+            this.btnSend.Size = new System.Drawing.Size(106, 23);
             this.btnSend.TabIndex = 3;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -85,7 +91,7 @@
             // 
             this.btnDisconnect.Location = new System.Drawing.Point(536, 17);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(100, 23);
+            this.btnDisconnect.Size = new System.Drawing.Size(106, 23);
             this.btnDisconnect.TabIndex = 4;
             this.btnDisconnect.Text = "Disconnect";
             this.btnDisconnect.UseVisualStyleBackColor = true;
@@ -134,7 +140,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1500;
+            this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // chkBoxAuto
@@ -191,7 +197,7 @@
             this.grpBoxConnection.Controls.Add(this.btnConnect);
             this.grpBoxConnection.Location = new System.Drawing.Point(12, 12);
             this.grpBoxConnection.Name = "grpBoxConnection";
-            this.grpBoxConnection.Size = new System.Drawing.Size(642, 51);
+            this.grpBoxConnection.Size = new System.Drawing.Size(648, 51);
             this.grpBoxConnection.TabIndex = 12;
             this.grpBoxConnection.TabStop = false;
             this.grpBoxConnection.Text = "Connection";
@@ -202,7 +208,7 @@
             this.grpBoxCommand.Controls.Add(this.btnSend);
             this.grpBoxCommand.Location = new System.Drawing.Point(12, 69);
             this.grpBoxCommand.Name = "grpBoxCommand";
-            this.grpBoxCommand.Size = new System.Drawing.Size(642, 47);
+            this.grpBoxCommand.Size = new System.Drawing.Size(648, 47);
             this.grpBoxCommand.TabIndex = 13;
             this.grpBoxCommand.TabStop = false;
             this.grpBoxCommand.Text = "Command";
@@ -223,16 +229,106 @@
             this.grpBoxLog.Controls.Add(this.txtLog);
             this.grpBoxLog.Location = new System.Drawing.Point(12, 357);
             this.grpBoxLog.Name = "grpBoxLog";
-            this.grpBoxLog.Size = new System.Drawing.Size(642, 128);
+            this.grpBoxLog.Size = new System.Drawing.Size(648, 128);
             this.grpBoxLog.TabIndex = 15;
             this.grpBoxLog.TabStop = false;
             this.grpBoxLog.Text = "Log";
+            // 
+            // grpBoxTXBitrate
+            // 
+            this.grpBoxTXBitrate.Controls.Add(this.cirPbTXBitrate);
+            this.grpBoxTXBitrate.Location = new System.Drawing.Point(448, 122);
+            this.grpBoxTXBitrate.Name = "grpBoxTXBitrate";
+            this.grpBoxTXBitrate.Size = new System.Drawing.Size(212, 229);
+            this.grpBoxTXBitrate.TabIndex = 15;
+            this.grpBoxTXBitrate.TabStop = false;
+            this.grpBoxTXBitrate.Text = "TX Bitrate";
+            // 
+            // cirPbTXBitrate
+            // 
+            this.cirPbTXBitrate.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cirPbTXBitrate.AnimationSpeed = 500;
+            this.cirPbTXBitrate.BackColor = System.Drawing.Color.Transparent;
+            this.cirPbTXBitrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold);
+            this.cirPbTXBitrate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cirPbTXBitrate.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cirPbTXBitrate.InnerMargin = 2;
+            this.cirPbTXBitrate.InnerWidth = -1;
+            this.cirPbTXBitrate.Location = new System.Drawing.Point(6, 19);
+            this.cirPbTXBitrate.MarqueeAnimationSpeed = 2000;
+            this.cirPbTXBitrate.Maximum = 300;
+            this.cirPbTXBitrate.Name = "cirPbTXBitrate";
+            this.cirPbTXBitrate.OuterColor = System.Drawing.Color.Gray;
+            this.cirPbTXBitrate.OuterMargin = -25;
+            this.cirPbTXBitrate.OuterWidth = 26;
+            this.cirPbTXBitrate.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cirPbTXBitrate.ProgressWidth = 26;
+            this.cirPbTXBitrate.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.cirPbTXBitrate.Size = new System.Drawing.Size(200, 200);
+            this.cirPbTXBitrate.StartAngle = 90;
+            this.cirPbTXBitrate.Step = 1;
+            this.cirPbTXBitrate.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cirPbTXBitrate.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbTXBitrate.SubscriptText = "MBit/s";
+            this.cirPbTXBitrate.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cirPbTXBitrate.SuperscriptMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbTXBitrate.SuperscriptText = "";
+            this.cirPbTXBitrate.TabIndex = 11;
+            this.cirPbTXBitrate.Text = "1";
+            this.cirPbTXBitrate.TextMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbTXBitrate.Value = 1;
+            // 
+            // grpBoxRXBitrate
+            // 
+            this.grpBoxRXBitrate.Controls.Add(this.cirPbRXBitrate);
+            this.grpBoxRXBitrate.Location = new System.Drawing.Point(230, 122);
+            this.grpBoxRXBitrate.Name = "grpBoxRXBitrate";
+            this.grpBoxRXBitrate.Size = new System.Drawing.Size(212, 229);
+            this.grpBoxRXBitrate.TabIndex = 16;
+            this.grpBoxRXBitrate.TabStop = false;
+            this.grpBoxRXBitrate.Text = "RX Bitrate";
+            // 
+            // cirPbRXBitrate
+            // 
+            this.cirPbRXBitrate.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cirPbRXBitrate.AnimationSpeed = 500;
+            this.cirPbRXBitrate.BackColor = System.Drawing.Color.Transparent;
+            this.cirPbRXBitrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold);
+            this.cirPbRXBitrate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.cirPbRXBitrate.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cirPbRXBitrate.InnerMargin = 2;
+            this.cirPbRXBitrate.InnerWidth = -1;
+            this.cirPbRXBitrate.Location = new System.Drawing.Point(6, 19);
+            this.cirPbRXBitrate.MarqueeAnimationSpeed = 2000;
+            this.cirPbRXBitrate.Maximum = 300;
+            this.cirPbRXBitrate.Name = "cirPbRXBitrate";
+            this.cirPbRXBitrate.OuterColor = System.Drawing.Color.Gray;
+            this.cirPbRXBitrate.OuterMargin = -25;
+            this.cirPbRXBitrate.OuterWidth = 26;
+            this.cirPbRXBitrate.ProgressColor = System.Drawing.Color.Blue;
+            this.cirPbRXBitrate.ProgressWidth = 26;
+            this.cirPbRXBitrate.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.cirPbRXBitrate.Size = new System.Drawing.Size(200, 200);
+            this.cirPbRXBitrate.StartAngle = 90;
+            this.cirPbRXBitrate.Step = 1;
+            this.cirPbRXBitrate.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cirPbRXBitrate.SubscriptMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbRXBitrate.SubscriptText = "MBit/s";
+            this.cirPbRXBitrate.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cirPbRXBitrate.SuperscriptMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbRXBitrate.SuperscriptText = "";
+            this.cirPbRXBitrate.TabIndex = 11;
+            this.cirPbRXBitrate.Text = "1";
+            this.cirPbRXBitrate.TextMargin = new System.Windows.Forms.Padding(0);
+            this.cirPbRXBitrate.Value = 1;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(665, 495);
+            this.ClientSize = new System.Drawing.Size(671, 495);
+            this.Controls.Add(this.grpBoxRXBitrate);
+            this.Controls.Add(this.grpBoxTXBitrate);
             this.Controls.Add(this.grpBoxLog);
             this.Controls.Add(this.grpBoxSignal);
             this.Controls.Add(this.grpBoxCommand);
@@ -253,6 +349,8 @@
             this.grpBoxSignal.PerformLayout();
             this.grpBoxLog.ResumeLayout(false);
             this.grpBoxLog.PerformLayout();
+            this.grpBoxTXBitrate.ResumeLayout(false);
+            this.grpBoxRXBitrate.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -275,6 +373,10 @@
         private System.Windows.Forms.GroupBox grpBoxCommand;
         private System.Windows.Forms.GroupBox grpBoxSignal;
         private System.Windows.Forms.GroupBox grpBoxLog;
+        private System.Windows.Forms.GroupBox grpBoxTXBitrate;
+        private CircularProgressBar.CircularProgressBar cirPbTXBitrate;
+        private System.Windows.Forms.GroupBox grpBoxRXBitrate;
+        private CircularProgressBar.CircularProgressBar cirPbRXBitrate;
     }
 }
 

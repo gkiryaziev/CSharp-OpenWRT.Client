@@ -45,10 +45,16 @@ namespace OpenWRT.Client
         {
             if (clientManager.IsConnected)
             {
-                string value = clientManager.GetSignal();
+                DataModel data = clientManager.GetData();
 
-                cirPbSignal.Value = int.Parse(value) + 100;
-                cirPbSignal.Text = value;
+                cirPbSignal.Value = int.Parse(data.Signal) + 100;
+                cirPbSignal.Text = data.Signal;
+
+                cirPbTXBitrate.Value = int.Parse(data.TX_Bitrate);
+                cirPbTXBitrate.Text = data.TX_Bitrate;
+
+                cirPbRXBitrate.Value = int.Parse(data.RX_Bitrate);
+                cirPbRXBitrate.Text = data.RX_Bitrate;
             }
         }
 
@@ -65,6 +71,8 @@ namespace OpenWRT.Client
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            chkBoxAuto.Checked = true;
+
             timer1.Enabled = chkBoxAuto.Checked;
             btnSend.Enabled = !chkBoxAuto.Checked;
         }

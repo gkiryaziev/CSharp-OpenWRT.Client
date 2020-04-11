@@ -1,9 +1,5 @@
 ﻿using Renci.SshNet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SSH.Client
 {
@@ -13,6 +9,7 @@ namespace SSH.Client
 
         public bool IsConnected = false;
         public string Message = string.Empty;
+
 
         public void Connect(string host, string username, string password, int port = 22)
         {
@@ -77,23 +74,57 @@ namespace SSH.Client
             return Message;
         }
 
-        public string GetSignal()
+        public DataModel GetData()
         {
+            DataModel data = new DataModel();
+			
+			// get raw data
             string raw_data = Send("iw dev wlan0 station dump");
-
+			// split raw data by lines
             string[] array_data = raw_data.Split('\n');
-
+			// trim raw lines
             for (int i = 0; i < array_data.Length; ++i)
             {
                 array_data[i] = array_data[i].Trim();
             }
 
-            int indexSignal = Array.FindIndex(array_data, row => row.StartsWith("signal:"));
+            // get 'signal'
+            data.Signal = GetSignal(array_data);
+            // get 'tx bitrate'
+            data.TX_Bitrate = GetTX_Bitrate(array_data);
+            // get 'rx bitrate'
+            data.RX_Bitrate = GetRX_Bitrate(array_data);
 
-            if (indexSignal >= 0)
-            {
-                return array_data[indexSignal].Split(':')[1].Split('[')[0].Trim();
-            }
+            return data;
+        }
+
+        private string GetSignal(string[] data)
+        {
+            // get raw line 'signal'
+            int index = Array.FindIndex(data, row => row.StartsWith("signal:"));
+            // split, trim raw line 'signal'
+            if (index >= 0)
+                return data[index].Split(':')[1].Split('[')[0].Trim();
+            else
+                return string.Empty;
+        }
+
+        private string GetTX_Bitrate(string[] data)
+        {
+            int index = Array.FindIndex(data, row => row.StartsWith("tx bitrate:"));
+            // split, trim raw line 'tx bitrate'
+            if (index >= 0)
+                return data[index].Split(':')[1].Trim().Split(' ')[0].Trim().Split('.')[0];
+            else
+                return string.Empty;
+        }
+
+        private string GetRX_Bitrate(string[] data)
+        {
+            int index = Array.FindIndex(data, row => row.StartsWith("rx bitrate:"));
+            // split, trim raw line 'rx bitrate'
+            if (index >= 0)
+                return data[index].Split(':')[1].Trim().Split(' ')[0].Trim().Split('.')[0];
             else
                 return string.Empty;
         }

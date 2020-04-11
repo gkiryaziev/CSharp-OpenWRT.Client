@@ -2,7 +2,7 @@
 
 ![Alt text](/screenshot.png?raw=true "screenshot")
 
-Tested with OpenWrt (18.06.4)
+Tested with OpenWrt (18.06.5)
 
 ### Packages
 ```
