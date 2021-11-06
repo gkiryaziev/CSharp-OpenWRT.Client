@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SSH.Client;
+using System;
 using System.Windows.Forms;
-using SSH.Client;
 
 namespace OpenWRT.Client
 {
     public partial class FrmMain : Form
     {
-        ClientManager clientManager = new ClientManager();
+        readonly ClientManager clientManager = new ClientManager();
 
         public FrmMain()
         {
@@ -47,14 +40,23 @@ namespace OpenWRT.Client
             {
                 DataModel data = clientManager.GetData();
 
-                cirPbSignal.Value = int.Parse(data.Signal) + 100;
-                cirPbSignal.Text = data.Signal;
+                if (int.TryParse(data.Signal, out int signal))
+                {
+                    cirPbSignal.Value = signal + 100;
+                    cirPbSignal.Text = data.Signal;
+                }
 
-                cirPbTXBitrate.Value = int.Parse(data.TX_Bitrate);
-                cirPbTXBitrate.Text = data.TX_Bitrate;
+                if (int.TryParse(data.TX_Bitrate, out int txBitrate))
+                {
+                    cirPbTXBitrate.Value = txBitrate;
+                    cirPbTXBitrate.Text = data.TX_Bitrate;
+                }
 
-                cirPbRXBitrate.Value = int.Parse(data.RX_Bitrate);
-                cirPbRXBitrate.Text = data.RX_Bitrate;
+                if (int.TryParse(data.RX_Bitrate, out int rxBitrate))
+                {
+                    cirPbRXBitrate.Value = rxBitrate;
+                    cirPbRXBitrate.Text = data.RX_Bitrate;
+                }
             }
         }
 
